@@ -1,2 +1,11 @@
 ---
-message: "This node is using common data"
+ntp::servers: [ '0.pool.ntp.org', '1.pool.ntp.org' ]
+motd::content: |
+Unauthorized use of Puppetlabs resources is prohibited. This service is restricted to authorized users only. All activities on this system are logged.
+Unauthorized access will be fully investigated and reported to the appropriate law enforcement agencies.
+ssh::permit_root_login: no
+accounts::user_list:
+  joe:
+    comment: "Joe Smith User Account"
+wazuh::agent::wazuh_register_endpoint:
+wazuh::agent::wazuh_reporting_endpoint:

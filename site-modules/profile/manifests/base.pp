@@ -1,5 +1,15 @@
+# This class defines the baseline applied to all systems
 class profile::base {
-
-  #the base profile should include component modules that will be on all nodes
-
+  # Include OS specific base profiles.
+  case $::kernel {
+    'linux': {
+      include profile::base::linux
+    }
+    'windows': {
+      include profile::base::windows
+    }
+    default: {
+      fail ("Kernel: ${::kernel} not supported in ${module_name}")
+    }
+  }
 }
